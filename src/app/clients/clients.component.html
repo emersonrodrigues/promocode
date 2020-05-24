@@ -1,0 +1,82 @@
+<div class="geral">
+    <div *ngIf="!ncliente">
+    <mat-form-field>
+        <mat-label>Filter</mat-label>
+        <input matInput (keyup)="applyFilter($event)" placeholder="Ex. ium">
+      </mat-form-field>
+    
+      <table mat-table
+           [dataSource]="dataSource" multiTemplateDataRows
+           class="mat-elevation-z8">
+    
+    
+      <ng-container matColumnDef="{{column}}" *ngFor="let column of displayedColumns">
+        <th mat-header-cell *matHeaderCellDef> {{column}} </th>
+        <td mat-cell *matCellDef="let element"> {{element[column]}} </td>
+      </ng-container>
+    
+      <!-- Expanded Content Column - The detail row is made up of this one column that spans across all columns -->
+      <ng-container matColumnDef="expandedDetail">
+        <td mat-cell *matCellDef="let element" [attr.colspan]="displayedColumns.length">
+          <div class="example-element-detail"
+               [@detailExpand]="element == expandedElement ? 'expanded' : 'collapsed'">
+            <div class="example-element-diagram">
+              <div class="example-element-position"> {{element.name}} </div>
+              <div class="example-element-position"> {{element.email}} </div>
+              <div class="example-element-symbol"> {{element.cnpj}} </div>
+              <div class="example-element-name"> {{element.address}} </div>
+            </div>
+            <div class="example-element-description">
+              <app-client [cliente]="element"></app-client>
+            <!-- <app-product [produto]="element"></app-product> -->
+              <!-- {{element.description}} -->
+              <!-- <span class="example-element-description-attribution"> -- Wikipedia </span> -->
+            </div>
+          </div>
+        </td>
+      </ng-container>
+    
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let element; columns: displayedColumns;"
+          class="example-element-row"
+          [class.example-expanded-row]="expandedElement === element"
+          (click)="expandedElement = expandedElement === element ? null : element">
+      </tr>
+      <tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="example-detail-row"></tr>
+    </table>
+    
+    <button mat-raised-button color="red" (click)="novoClient()"style="margin-left: 10px;">Criar novo produto</button>
+    </div>
+    <div *ngIf="ncliente">
+    
+        <br>
+        <mat-form-field appearance="fill"style="margin-left: 10px;">
+          <mat-label>Nome</mat-label>
+          <input matInput placeholder="Nome do Cliente" [(ngModel)]="cliente.name">
+        </mat-form-field>
+        <br>
+        <mat-form-field appearance="fill" style="margin-left:  10px;">
+            <mat-label>Endereço</mat-label>
+            <input matInput placeholder="Endereço" [(ngModel)]="cliente.address" >
+          </mat-form-field>
+        <br>
+          <mat-form-field appearance="fill" style="margin-left:  10px;">
+            <mat-label>CNPJ</mat-label>
+            <input matInput placeholder="CNPJ" [(ngModel)]="cliente.cnpj" >
+          </mat-form-field>
+          <br>
+          <mat-form-field appearance="fill" style="margin-left:  10px;">
+            <mat-label>Email</mat-label>
+            <input matInput placeholder="Email" [(ngModel)]="cliente.email" >
+          </mat-form-field>
+          <br>
+          <mat-form-field appearance="fill" style="margin-left:  10px;">
+            <mat-label>Telefone</mat-label>
+            <input matInput placeholder="Telefone" [(ngModel)]="cliente.mobile" >
+          </mat-form-field>
+          <br>
+    
+          <button mat-raised-button color="red" (click)="criar()"style="margin-left: 10px;">Criar</button>
+          <button mat-raised-button color="red" (click)="cancelar()"style="margin-left: 10px;">Cancelar</button>
+    </div>
+    </div>

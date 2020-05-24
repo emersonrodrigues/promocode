@@ -1,0 +1,43 @@
+<div class="example-container">
+    <mat-form-field appearance="fill"style="margin-left: 10px;">
+      <mat-label>Descrição</mat-label>
+      <input matInput placeholder="Descrição do produto" [(ngModel)]="produto.description">
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" style="margin-left: 10px;">
+        <mat-label>Desconto</mat-label>
+        <input matInput placeholder="Desconto" [(ngModel)]="produto.discount" type="number">
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" style="margin-left: 10px;">
+        <mat-label>Preço</mat-label>
+        <input matInput placeholder="Preço" [(ngModel)]="produto.price" type="number">
+      </mat-form-field>
+      <br>
+      <!-- <mat-form-field appearance="fill"style="margin-left: 10px;">
+        <mat-label>Data Inicio</mat-label>
+        <input matInput placeholder="Data Inicio" [(ngModel)]="produto.releaseDate">
+      </mat-form-field>
+      <mat-form-field appearance="fill"style="margin-left: 10px;">
+        <mat-label>Data Fim</mat-label>
+        <input matInput placeholder="Data Fim" [(ngModel)]="produto.endDate">
+      </mat-form-field> -->
+      <mat-form-field style="margin-left: 10px;">
+        <mat-label>Data Inicio</mat-label>
+        <input matInput [matDatepicker]="picker" [value]="produto.releaseDate">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+
+      <mat-form-field style="margin-left: 10px;">
+        <mat-label>Data Fim</mat-label>
+        <input matInput [matDatepicker]="picker3" [value]="produto.endDate">
+        <mat-datepicker-toggle matSuffix [for]="picker3"></mat-datepicker-toggle>
+        <mat-datepicker #picker3></mat-datepicker>
+      </mat-form-field>
+
+      <button mat-raised-button color="green" (click)="atualizar()"style="margin-left: 100px;"> Atualizar</button>
+      <button mat-raised-button color="red" (click)="deletar()"style="margin-left: 10px;">Deletar</button>
+    
+  </div>
+  

@@ -1,0 +1,30 @@
+<div class="example-container">
+    <mat-form-field appearance="fill"style="margin-left: 10px;">
+      <mat-label>Nome</mat-label>
+      <input matInput placeholder="Nome do Cliente" [(ngModel)]="cliente.name">
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" style="margin-left: 10px;">
+        <mat-label>Email</mat-label>
+        <input matInput placeholder="Email" [(ngModel)]="cliente.email" >
+      </mat-form-field>
+
+    <mat-form-field appearance="fill" style="margin-left: 10px;">
+        <mat-label>Endereço</mat-label>
+        <input matInput placeholder="Endereço" [(ngModel)]="cliente.address" >
+    </mat-form-field>
+    <br>
+    <mat-form-field appearance="fill" style="margin-left: 10px;">
+        <mat-label>CNPJ</mat-label>
+        <input matInput placeholder="CNPJ" [(ngModel)]="cliente.cnpj" >
+    </mat-form-field>
+    <mat-form-field appearance="fill" style="margin-left: 10px;">
+        <mat-label>Telefone</mat-label>
+        <input matInput placeholder="Telefone" [(ngModel)]="cliente.mobile" >
+    </mat-form-field>
+
+      <button mat-raised-button color="green" (click)="atualizar()"style="margin-left: 40px;"> Atualizar</button>
+      <button mat-raised-button color="red" (click)="deletar()"style="margin-left: 10px;">Deletar</button>
+    
+  </div>
+  
